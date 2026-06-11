@@ -1,0 +1,82 @@
+/* src/components/shared/StatCard.css */
+
+.stat-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    border-left: 4px solid transparent;
+    padding: 16px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    flex: 1;
+    min-width: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.stat-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+}
+
+/* Top row */
+.stat-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.stat-count {
+    font-size: 2.2em;
+    font-weight: 800;
+    color: #1A1A1A;
+    line-height: 1;
+}
+
+.stat-arrow {
+    font-size: 1.8em;
+    font-weight: 700;
+    line-height: 1;
+}
+
+/* Icon box */
+.stat-icon-box {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* Bottom row */
+.stat-card-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.stat-label {
+    font-size: 0.95em;
+    font-weight: 600;
+    color: #374151;
+}
+
+.stat-subtext {
+    font-size: 0.85em;
+    font-weight: 500;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+    .stat-card {
+        min-width: 100%;
+    }
+
+    .stat-count {
+        font-size: 1.8em;
+    }
+}

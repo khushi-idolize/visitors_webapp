@@ -1,0 +1,86 @@
+/* src/pages/Dashboard/Dashboard.css */
+
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    max-width: 1200px;
+    height: 100%
+}
+
+/* Greeting */
+.dashboard-greeting {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.greeting-text {
+    font-size: 1.6em;
+    font-weight: 700;
+    color: #1A1A1A;
+    margin: 0;
+}
+
+.greeting-name {
+    color: #C0392B;
+}
+
+.greeting-date {
+    font-size: 0.95em;
+    color: #6B7280;
+}
+
+/* Stat Cards */
+.stat-cards-row {
+    display: flex;
+    gap: 16px;
+}
+
+/* Pending */
+.pending-section {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 16px 20px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.pending-header {
+    margin-bottom: 16px;
+}
+
+.pending-title {
+    font-size: 1.05em;
+    font-weight: 700;
+    color: #1A1A1A;
+    margin: 0;
+}
+
+.pending-empty {
+    text-align: center;
+    padding: 12px 0;
+    color: #9CA3AF;
+    font-size: 0.95em;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 1024px) {
+    .stat-cards-row {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard {
+        gap: 20px;
+    }
+
+    .greeting-text {
+        font-size: 1.3em;
+    }
+
+    .stat-cards-row {
+        flex-direction: column;
+    }
+}

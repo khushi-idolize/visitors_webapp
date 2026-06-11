@@ -1,0 +1,122 @@
+/* src/components/shared/QuickActions.css */
+
+.quick-actions-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.quick-actions-label {
+    font-size: 0.78em;
+    font-weight: 700;
+    color: #9CA3AF;
+    letter-spacing: 0.8px;
+    margin: 0;
+}
+
+.quick-actions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+/* Base card */
+.action-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    border: none;
+    text-align: left;
+    transition: all 0.2s ease;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Red filled */
+.action-card-primary {
+    background-color: #C0392B;
+}
+
+.action-card-primary:hover {
+    background-color: #A93226;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(192, 57, 43, 0.35);
+}
+
+/* White outlined */
+.action-card-secondary {
+    background-color: #ffffff;
+    border: 1.5px solid #E5E7EB;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.action-card-secondary:hover {
+    border-color: #C0392B;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.10);
+}
+
+/* Icon boxes */
+.action-icon-box {
+    width: 46px;
+    height: 46px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.action-icon-primary {
+    background-color: rgba(255,255,255,0.20);
+}
+
+.action-icon-secondary {
+    background-color: #FFF0F0;
+}
+
+/* Text */
+.action-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+}
+
+.action-title {
+    font-size: 1em;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.action-title-dark {
+    color: #1A1A1A;
+}
+
+.action-subtitle {
+    font-size: 0.82em;
+    color: rgba(255,255,255,0.80);
+}
+
+.action-card-secondary .action-subtitle {
+    color: #6B7280;
+}
+
+/* Chevron */
+.action-chevron {
+    color: rgba(255,255,255,0.80);
+    flex-shrink: 0;
+}
+
+.action-chevron-dark {
+    color: #9CA3AF;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+    .quick-actions-grid {
+        grid-template-columns: 1fr;
+    }
+}

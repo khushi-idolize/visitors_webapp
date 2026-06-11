@@ -1,0 +1,47 @@
+.brand-panel{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    background-color: #d0302f;
+    /* opacity: 100%; */
+    width: 45%;
+    height: 100vh;
+    padding: 28px;
+     background-image: repeating-linear-gradient(
+        135deg,
+        transparent,
+        transparent 20px,
+        rgba(255, 255, 255, 0.04) 20px,
+        rgba(255, 255, 255, 0.04) 21px
+    );
+}
+
+.brandLogo{
+    width: 150px;
+}
+
+.brand-center{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.brand-title{
+    color: white;
+    font-size: 4em;
+    font-weight: 800;
+    margin-bottom: 8px;
+    letter-spacing: -1px;
+}
+
+.brand-tagline{
+    color: rgba(255,255,255,0.90);
+    font-size: 1.3em;
+    /* font-weight: 400; */
+}
+
+.brand-footer{
+    color: rgba(255,255,255,0.70);
+    font-size: 1.1em;
+    margin-top: auto;
+}

@@ -1,0 +1,101 @@
+/* src/components/layout/Sidebar.css */
+
+.sidebar {
+    width: 220px;
+    height: 100%;
+    background-color: #ffffff;
+    border-right: 1px solid #E5E7EB;
+    display: flex;
+    flex-direction: column;
+    padding: 24px 12px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+/* Brand */
+.sidebar-brand {
+    padding: 0 12px;
+    margin-bottom: 28px;
+}
+
+.sidebar-app-name {
+    font-size: 1.4em;
+    font-weight: 800;
+    color: #C0392B;
+    letter-spacing: -0.5px;
+}
+
+/* Nav */
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 0.95em;
+    color: #374151;
+    width: 100%;
+    text-align: left;
+    transition: all 0.15s ease;
+    font-family: 'Inter', sans-serif;
+}
+
+.nav-item:hover {
+    background-color: #F9FAFB;
+    color: #C0392B;
+}
+
+.nav-item.active {
+    background-color: #FFF0F0;
+    color: #C0392B;
+    font-weight: 600;
+}
+
+/* User section */
+.sidebar-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    border-top: 1px solid #E5E7EB;
+    margin-top: auto;
+}
+
+.sidebar-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #C0392B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-shrink: 0;
+}
+
+.sidebar-user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.sidebar-username {
+    font-size: 0.9em;
+    font-weight: 600;
+    color: #1A1A1A;
+}
+
+.sidebar-role {
+    font-size: 0.78em;
+    color: #6B7280;
+}
