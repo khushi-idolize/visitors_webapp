@@ -1,21 +1,21 @@
-.sidebar {
+.admin-sidebar {
   width: 250px;
-  height: 100vh;
+  height: calc(100vh - 60px); /* EXACT CHANGE: Subtracts the 60px header height */
   background-color: var(--white);
   border-right: 1px solid var(--borderLight);
   display: flex;
   flex-direction: column;
   transition: width 0.3s ease;
   position: sticky;
-  top: 0;
-  z-index: 100;
+  top: 60px; /* EXACT CHANGE: Forces the sidebar to start 60px down, directly below the header */
+  z-index: 10; /* EXACT CHANGE: Lowered so the header stays on top */
 }
 
-.sidebar.collapsed {
+.admin-sidebar.collapsed {
   width: 80px;
 }
 
-.sidebar-header {
+.admin-sidebar-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -23,7 +23,7 @@
   height: 80px;
 }
 
-.sidebar.collapsed .sidebar-header {
+.admin-sidebar.collapsed .admin-sidebar-header {
   justify-content: center;
   padding: 24px 0;
 }
@@ -45,7 +45,7 @@
   color: var(--textPrimary);
 }
 
-.sidebar-nav {
+.admin-sidebar-nav {
   flex: 1;
   padding: 0 12px;
   display: flex;
@@ -67,7 +67,7 @@
   transition: all 0.2s ease;
 }
 
-.sidebar.collapsed .nav-item {
+.admin-sidebar.collapsed .nav-item {
   justify-content: center;
   padding: 12px 0;
 }
@@ -82,7 +82,7 @@
   color: var(--brandRed);
 }
 
-.sidebar-footer {
+.admin-sidebar-footer {
   padding: 20px;
   border-top: 1px solid var(--borderLight);
   display: flex;
@@ -90,7 +90,7 @@
   gap: 16px;
 }
 
-.sidebar.collapsed .sidebar-footer {
+.admin-sidebar.collapsed .admin-sidebar-footer {
   align-items: center;
   padding: 20px 0;
 }
@@ -151,6 +151,6 @@
   border-color: var(--brandRed);
 }
 
-.sidebar.collapsed .logout-btn span {
+.admin-sidebar.collapsed .logout-btn span {
   display: none;
 }

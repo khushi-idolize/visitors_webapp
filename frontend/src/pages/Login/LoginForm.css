@@ -1,203 +1,193 @@
 /* src/pages/Login/LoginForm.css */
-
+ 
 .login-form {
     width: 55%;
-    min-height: 100vh;
+    height: 100vh;              /* exact viewport height — no scroll */
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;        /* centers children horizontally */
-    padding: 40px 70px;
+    align-items: center;
+    padding: 0 64px;            /* horizontal only — vertical handled by justify */
     box-sizing: border-box;
     background-color: #ffffff;
-    gap: 10px;
-    overflow-y: auto;
+    gap: 12px;
+    overflow: hidden;           /* hard no-scroll */
 }
-
-/* Header — centered */
+ 
+/* Logo wrapper — pushes logo down to align with Swagat */
+.login-logo-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-top: 8px;
+}
+ 
+.login-logo {
+    height: 70px;
+    width: auto;
+    object-fit: contain;
+}
+ 
+/* Welcome header */
 .login-header {
     display: flex;
     flex-direction: column;
-    align-items: center;        /* center the text */
-    gap: 3px;
+    align-items: center;
+    gap: 2px;
     width: 100%;
-    margin-bottom: 4px;
 }
-
+ 
 .welcome-text {
-    font-size: 1.6em;           /* reduced from 1.8em */
-    font-weight: 700;
+    font-size: 1.6em;
+    font-weight: 800;
     color: #1A1A1A;
     margin: 0;
     text-align: center;
 }
-
+ 
 .welcome-instruction {
-    color: #6B7280;
-    font-size: 0.85em;          /* reduced */
+    color: #9CA3AF;
+    font-size: 0.82em;
     margin: 0;
     text-align: center;
 }
-
-/* Role Buttons */
+ 
+/* Role buttons — SIDE BY SIDE */
 .login-buttons {
     display: flex;
-    flex-direction: column;
-    gap: 7px;
+    flex-direction: row;        /* side by side */
+    gap: 10px;
     width: 100%;
 }
-
+ 
 .role-btn {
+    flex: 1;                    /* equal width */
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    padding: 9px;               /* reduced from 11px */
+    gap: 6px;
+    padding: 10px 8px;
     border-radius: 8px;
-    font-size: 0.88em;          /* reduced */
-    font-weight: 500;
+    font-size: 0.85em;
+    font-weight: 600;
     cursor: pointer;
-    width: 100%;
-    transition: all 0.25s ease;
+    transition: all 0.2s ease;
     font-family: 'Inter', sans-serif;
     position: relative;
     border: 1.5px solid transparent;
+    white-space: nowrap;
 }
-
+ 
+/* Active — filled red */
 .role-active {
     background-color: #C0392B;
     color: white;
     border-color: #C0392B;
     opacity: 1;
 }
-
-.role-active-admin {
-    background-color: #C0392B;
-    color: white;
-    border-color: #C0392B;
-    opacity: 1;
-}
-
+ 
+/* Inactive — faded outline */
 .role-inactive {
     background-color: white;
     color: #C0392B;
     border-color: #C0392B;
-    opacity: 0.35;
+    opacity: 0.4;
 }
-
+ 
 .role-inactive:hover {
-    opacity: 0.7;
+    opacity: 0.75;
 }
-
+ 
 .default-badge {
     position: absolute;
-    right: 12px;
-    background-color: rgba(255, 255, 255, 0.25);
+    right: 8px;
+    background-color: rgba(255, 255, 255, 0.28);
     color: white;
-    font-size: 0.65em;
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-weight: 600;
+    font-size: 0.6em;
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-weight: 700;
     letter-spacing: 0.5px;
 }
-
-/* Divider */
-.divider {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: #9CA3AF;
-    font-size: 0.78em;          /* reduced */
-    width: 100%;
-}
-
-.divider::before,
-.divider::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background-color: #E5E7EB;
-}
-
-/* Error banner */
+ 
+/* Error */
 .error-banner {
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 8px 12px;          /* reduced */
+    gap: 7px;
+    padding: 8px 12px;
     background-color: #FEF2F2;
     border: 1px solid #FCA5A5;
     border-radius: 8px;
     color: #DC2626;
-    font-size: 0.82em;
+    font-size: 0.8em;
     font-weight: 500;
     width: 100%;
 }
-
+ 
 /* Form */
 .form-container {
     display: flex;
     flex-direction: column;
-    gap: 10px;                  /* reduced */
+    gap: 10px;
     width: 100%;
 }
-
+ 
 .form-group {
     display: flex;
     flex-direction: column;
-    gap: 4px;                   /* reduced */
+    gap: 4px;
 }
-
+ 
 .form-label {
-    font-size: 0.85em;
+    font-size: 0.82em;
     font-weight: 600;
     color: #374151;
 }
-
+ 
 .required {
     color: #C0392B;
 }
-
-/* Input wrapper */
+ 
 .input-wrapper {
     position: relative;
     display: flex;
     align-items: center;
     width: 100%;
 }
-
+ 
 .input-icon {
     position: absolute;
-    left: 12px;
+    left: 11px;
     color: #9CA3AF;
     pointer-events: none;
 }
-
+ 
 .form-input {
     width: 100%;
-    padding: 9px 12px 9px 38px; /* reduced vertical padding */
+    padding: 9px 12px 9px 34px;
     border: 1.5px solid #E5E7EB;
     border-radius: 8px;
-    font-size: 0.88em;
+    font-size: 0.86em;
     color: #1A1A1A;
     outline: none;
     box-sizing: border-box;
     transition: border-color 0.2s ease;
     font-family: 'Inter', sans-serif;
+    background-color: white;
 }
-
+ 
 .form-input:focus {
     border-color: #C0392B;
 }
-
+ 
 .form-input::placeholder {
-    color: #9CA3AF;
+    color: #C4C9D4;
 }
-
-/* Password toggle */
+ 
 .password-toggle {
     position: absolute;
-    right: 12px;
+    right: 11px;
     background: none;
     border: none;
     cursor: pointer;
@@ -206,115 +196,105 @@
     align-items: center;
     padding: 0;
 }
-
+ 
 .password-toggle:hover {
     color: #374151;
 }
-
+ 
 /* Login button */
 .login-button {
     width: 100%;
-    padding: 11px;              /* reduced */
+    padding: 11px;
     background-color: #1A1A2E;
     color: white;
     border: none;
     border-radius: 8px;
-    font-size: 0.92em;
+    font-size: 0.9em;
     font-weight: 700;
     cursor: pointer;
     letter-spacing: 1px;
     transition: background-color 0.2s ease;
     font-family: 'Inter', sans-serif;
 }
-
+ 
 .login-button:hover {
     background-color: #0f0f1a;
 }
-
+ 
 /* Visitor button */
 .visitor-btn {
     width: 100%;
-    padding: 9px;               /* reduced */
+    padding: 9px;
     background-color: white;
     color: #374151;
     border: 1.5px solid #E5E7EB;
     border-radius: 8px;
-    font-size: 0.88em;
+    font-size: 0.84em;
     font-weight: 500;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 7px;
     font-family: 'Inter', sans-serif;
     transition: all 0.2s ease;
 }
-
+ 
 .visitor-btn:hover {
     border-color: #C0392B;
     color: #C0392B;
 }
-
+ 
 /* Forgot password */
 .forgot-password {
     text-align: center;
-    color: #6B7280;
-    font-size: 0.82em;
+    color: #9CA3AF;
+    font-size: 0.8em;
     text-decoration: none;
     width: 100%;
     display: block;
 }
-
+ 
 .forgot-password:hover {
     color: #C0392B;
 }
-
-/* Temp hint */
-.temp-hint {
-    text-align: center;
-    font-size: 0.68em;          /* reduced */
-    color: #9CA3AF;
-    background-color: #F9FAFB;
-    padding: 6px 8px;           /* reduced */
-    border-radius: 6px;
-    border: 1px dashed #E5E7EB;
-    margin: 0;
-    width: 100%;
-}
-
+ 
 /* ── Responsive ── */
 @media (max-width: 1024px) {
     .login-form {
-        padding: 40px 50px;
+        padding: 0 48px;
+        gap: 11px;
     }
 }
-
+ 
 @media (max-width: 768px) {
     .login-form {
         width: 100%;
-        padding: 50px 32px 40px;
-        justify-content: flex-start;
+        padding: 0 32px;
+        height: 100vh;
+    }
+ 
+    .login-logo {
+        height: 58px;
     }
 }
-
+ 
 @media (max-width: 480px) {
     .login-form {
-        padding: 40px 20px 32px;
-        gap: 8px;
+        padding: 0 20px;
+        gap: 9px;
     }
-
+ 
+    .login-logo {
+        height: 48px;
+    }
+ 
     .welcome-text {
-        font-size: 1.4em;
+        font-size: 1.3em;
     }
-}
-
-@media (max-width: 360px) {
-    .login-form {
-        gap: 7px;
-        padding: 32px 16px;
-    }
-
-    .welcome-text {
-        font-size: 1.2em;
+ 
+    .role-btn {
+        font-size: 0.78em;
+        padding: 9px 6px;
     }
 }

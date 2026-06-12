@@ -2,6 +2,19 @@ import { useState } from "react";
 import "./Reports.css";
 import { useNavigate } from 'react-router-dom';
 
+// Reports.jsx
+import AppShell from '../../components/layout/AppShell';
+
+export default function Reports() {
+  return (
+    <AppShell role="admin">
+      <div className="reports-page">
+        {/* Your existing reports content */}
+      </div>
+    </AppShell>
+  );
+}
+
 const MOCK_DATA = [
   { id: 1, photo: null, name: "Ajay Singh", mobile: "7262290187", meetingContact: "Pooja Desai", purpose: "Client Visit", location: "Bengaluru", company: "KPMG", totalVisits: 1, lastCheckIn: "10 Jun 2026, 06:14:33 PM", lastCheckOut: "10 Jun 2026, 07:30:00 PM" },
   { id: 2, photo: null, name: "Sneha Iyer", mobile: "91234 56780", meetingContact: "Priya Nair", purpose: "Interview", location: "Bengaluru", company: "TechNova", totalVisits: 2, lastCheckIn: "10 Jun 2026, 06:14:06 PM", lastCheckOut: "10 Jun 2026, 08:00:00 PM" },

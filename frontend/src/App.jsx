@@ -1,9 +1,9 @@
+import './App.css';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import LoginPage from "./pages/Login/LoginPage";
 import VisitorLogin from './pages/Visitor Login/VisitorLogin';
-import Dashboard from './pages/Dashboard/index'; // RECEPTIONIST Dashboard
+import Dashboard from './pages/Dashboard/index'; 
 import Reports from "./pages/Reports/Reports";
-import AdminLayout from './components/layout/AdminLayout'; 
 import VisitorDetails from "./pages/Reports/VisitorDetails";
 
 // Colleague's New Imports
@@ -11,6 +11,7 @@ import VisitorPage from './pages/Visitors/index'
 import IDCardsPage from './pages/ID Cards/index'
 import AdminDashboard from './pages/AdminDashboard/index'
 import ForgotPassword from './pages/ForgotPassword/index'
+import RegisterVisitor from './pages/RegisterVisitor';
 
 const App = () => {
   return(
@@ -21,25 +22,22 @@ const App = () => {
         <Route path="/visitor-login" element={<VisitorLogin />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
 
-        {/* === RECEPTIONIST ROUTES (Uses colleague's AppShell inside the components) === */}
+        {/* === RECEPTIONIST ROUTES === */}
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/visitors" element={<VisitorPage />} />
+        <Route path="/visitors" element={<VisitorPage role="receptionist" />} />
         <Route path="/id-cards" element={<IDCardsPage role="receptionist" />} />
+        <Route path="/register-visitor" element={<RegisterVisitor/>} />
         
-        {/* === ADMIN ROUTES (Forced to use YOUR AdminLayout) === */}
-        <Route path="/admin" element={<AdminLayout />}>
-          {/* Redirect /admin to /admin/dashboard automatically */}
-          <Route index element={<Navigate to="dashboard" replace />} />
-          
-          {/* Admin specific pages */}
-          <Route path="dashboard" element={<AdminDashboard />} />
-          <Route path="reports" element={<Reports />} />
-          <Route path="visitor/:id" element={<VisitorDetails />} />
-          <Route path="id-cards" element={<IDCardsPage role="admin" />} />
-          
-          {/* Just ONE visitors route, correctly passing the admin role! */}
-          <Route path="visitors" element={<VisitorPage role="admin" />} />
-        </Route>
+        {/* === ADMIN ROUTES (Removed AdminLayout wrapper) === */}
+        {/* All these pages now use their own AppShell internally */}
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
+        <Route path="/admin/reports" element={<Reports />} />
+        <Route path="/admin/visitor/:id" element={<VisitorDetails />} />
+        <Route path="/admin/id-cards" element={<IDCardsPage role="admin" />} />
+        <Route path="/admin/visitors" element={<VisitorPage role="admin" />} />
+        
+        {/* Redirect for base /admin path if needed */}
+        <Route path="/admin" element={<Navigate to="/admin/dashboard" replace />} />
         
       </Routes>
     </BrowserRouter>

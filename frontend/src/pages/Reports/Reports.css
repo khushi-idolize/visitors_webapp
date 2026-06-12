@@ -119,9 +119,13 @@
 /* Table */
 .table-wrapper {
   background: var(--white);
-  border-radius: 12px;
-  border: 1px solid var(--borderLight);
-  overflow-x: auto;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  
+  /* THE NUCLEAR OVERRIDE: Kills the inner vertical scrollbar permanently */
+  max-height: none !important;
+  overflow-y: visible !important; 
+  overflow-x: auto; /* Allows left/right scrolling if the table gets too wide */
 }
 
 .reports-table {

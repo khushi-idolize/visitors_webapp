@@ -1,0 +1,10 @@
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+.table-wrapper {
+   max-height: 500px; /* Or whatever height fits your screen */
+   overflow-y: auto;
+}

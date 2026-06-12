@@ -1,7 +1,7 @@
 import './LoginPage.css'
 import BrandPanel from './BrandPanel'
 import LoginForm from './LoginForm'
-
+ 
 function LoginPage() {
   return (
     <div className="login-page">
@@ -10,5 +10,5 @@ function LoginPage() {
     </div>
   )
 }
-
+ 
 export default LoginPage

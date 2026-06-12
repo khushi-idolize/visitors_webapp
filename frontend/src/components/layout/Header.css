@@ -1,16 +1,28 @@
-.header{
+.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 24px;
-    z-index: 100;
+    
+    /* THE HAMMER: Rips the header out of the right-hand column and forces it to the absolute top of the screen */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    z-index: 9999;
+    box-sizing: border-box;
+
     background-color: white;
-     height: 60px;
+    height: 60px;
     border-bottom: 1px solid #E5E7EB;
 }
 
 .header-logo{
     height: 60px;
+    margin-left: 0;
+    margin-right: 5px;
+    padding: 5px;
+    z-index: 100;
 }
 
 .header-title{

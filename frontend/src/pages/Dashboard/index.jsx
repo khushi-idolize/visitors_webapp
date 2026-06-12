@@ -57,7 +57,7 @@ const Dashboard = () => {
                         onClick={() => navigate('/visitors')}
                     />
                     <StatCard
-                        label="Active ID Cards"
+                        label="Active Visitors"
                         count={stats.activeCards}
                         subtext="View details →"
                         subtextColor="#F59E0B"

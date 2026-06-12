@@ -8,14 +8,9 @@ const AdminSidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    // Add logout logic here later (clear tokens, etc.)
-    navigate('/');
-  };
-
   return (
-    <aside className={`sidebar ${isCollapsed ? 'collapsed' : ''}`}>
-      <div className="sidebar-header">
+    <aside className={`admin-sidebar ${isCollapsed ? 'collapsed' : ''}`}>
+      <div className="admin-sidebar-header">
         {!isCollapsed && (
           <div className="brand-logo">
             <h2 style={{ color: 'var(--brandRed)', margin: 0 }}>Swagat</h2>
@@ -30,7 +25,7 @@ const AdminSidebar = () => {
         </button>
       </div>
 
-      <nav className="sidebar-nav">
+      <nav className="admin-sidebar-nav">
         <NavLink to="/admin/dashboard" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
           <LayoutDashboard className="nav-icon" size={20} />
           {!isCollapsed && <span className="nav-label">Home</span>}
@@ -52,7 +47,7 @@ const AdminSidebar = () => {
         </NavLink>
       </nav>
 
-      <div className="sidebar-footer">
+      <div className="admin-sidebar-footer">
         <div className="user-profile">
           <div className="avatar">A</div>
           {!isCollapsed && (
@@ -62,10 +57,6 @@ const AdminSidebar = () => {
             </div>
           )}
         </div>
-        <button className="logout-btn" onClick={handleLogout}>
-          <LogOut size={18} />
-          {!isCollapsed && <span>Logout</span>}
-        </button>
       </div>
     </aside>
   );

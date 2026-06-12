@@ -1,50 +1,78 @@
 /* src/components/layout/Sidebar.css */
-
+ 
 .sidebar {
-    width: 220px;
-    height: 100%; /* Keeps the sidebar contained to the screen */
+    width: 240px;
+    height: 100%;
     background-color: #ffffff;
     border-right: 1px solid #E5E7EB;
     display: flex;
     flex-direction: column;
-    padding: 24px 12px;
-    box-sizing: border-box;
+    transition: width 0.25s ease;
+    overflow: hidden;
     flex-shrink: 0;
 }
-
-/* Header / Brand */
+ 
+.sidebar.collapsed {
+    width: 68px;
+}
+ 
+/* Header */
 .sidebar-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 12px;
-    margin-bottom: 28px;
+    padding: 16px 14px;
+    height: 64px;
+    border-bottom: 1px solid #F3F4F6;
+    flex-shrink: 0;
+    box-sizing: border-box;
 }
-
+ 
+.sidebar.collapsed .sidebar-header {
+    justify-content: center;
+    padding: 16px 0;
+}
+ 
 .brand-logo h2 {
-    font-size: 1.4em;
+    font-size: 1.35em;
     font-weight: 800;
     color: #C0392B;
     letter-spacing: -0.5px;
     margin: 0;
+    white-space: nowrap;
 }
-
+ 
+/* Toggle button */
 .toggle-btn {
     background: none;
     border: none;
     cursor: pointer;
     color: #6B7280;
+    padding: 6px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background-color 0.15s ease;
 }
-
-/* Nav */
+ 
+.toggle-btn:hover {
+    background-color: #F3F4F6;
+    color: #1A1A1A;
+}
+ 
+/* Navigation */
 .sidebar-nav {
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    flex: 1; /* This pushes the footer down to the bottom */
-    overflow-y: auto; /* Adds a scrollbar only if the links overflow */
+    gap: 2px;
+    padding: 12px 10px;
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
-
+ 
 .nav-item {
     display: flex;
     align-items: center;
@@ -54,46 +82,60 @@
     border: none;
     background: none;
     cursor: pointer;
-    font-size: 0.95em;
+    font-size: 0.9em;
     color: #374151;
     width: 100%;
     text-align: left;
     transition: all 0.15s ease;
     font-family: 'Inter', sans-serif;
     text-decoration: none;
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
 }
-
+ 
 .nav-item:hover {
     background-color: #F9FAFB;
     color: #C0392B;
 }
-
+ 
 .nav-item.active {
     background-color: #FFF0F0;
     color: #C0392B;
     font-weight: 600;
 }
-
-/* Footer & User section */
+ 
+/* Collapsed nav — center icons */
+.sidebar.collapsed .nav-item {
+    justify-content: center;
+    padding: 10px 0;
+}
+ 
+/* Footer */
 .sidebar-footer {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    padding: 12px 0 0 0;
+    gap: 8px;
+    padding: 12px 10px;
     border-top: 1px solid #E5E7EB;
-    margin-top: auto; /* Glues this whole block to the bottom */
+    flex-shrink: 0;
 }
-
+ 
 .user-profile {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 0 12px;
+    padding: 4px 2px;
+    overflow: hidden;
 }
-
+ 
+.sidebar.collapsed .user-profile {
+    justify-content: center;
+}
+ 
 .avatar {
-    width: 36px;
-    height: 36px;
+    width: 34px;
+    height: 34px;
     border-radius: 50%;
     background-color: #C0392B;
     display: flex;
@@ -101,45 +143,64 @@
     justify-content: center;
     color: white;
     flex-shrink: 0;
-    font-weight: bold;
+    font-weight: 700;
+    font-size: 0.9em;
 }
-
+ 
 .user-info {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 1px;
+    overflow: hidden;
 }
-
+ 
 .user-name {
-    font-size: 0.9em;
+    font-size: 0.88em;
     font-weight: 600;
     color: #1A1A1A;
+    white-space: nowrap;
 }
-
+ 
 .user-role {
-    font-size: 0.78em;
+    font-size: 0.75em;
     color: #6B7280;
+    white-space: nowrap;
 }
-
-/* New Logout Button Style */
+ 
+/* Logout button */
 .logout-btn {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 10px 12px;
+    gap: 8px;
+    padding: 9px 12px;
     border-radius: 8px;
-    border: 1px solid #E5E7EB;
+    border: 1.5px solid #E5E7EB;
     background: transparent;
     cursor: pointer;
-    font-size: 0.95em;
+    font-size: 0.88em;
     color: #374151;
     width: 100%;
     transition: all 0.15s ease;
     font-family: 'Inter', sans-serif;
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
 }
-
+ 
 .logout-btn:hover {
     background-color: #FFF0F0;
     color: #C0392B;
     border-color: #FCA5A5;
+}
+ 
+.sidebar.collapsed .logout-btn {
+    justify-content: center;
+    padding: 9px 0;
+    border: none;
+}
+ 
+/* Responsive */
+@media (max-width: 768px) {
+    .sidebar { width: 200px; }
+    .sidebar.collapsed { width: 56px; }
 }

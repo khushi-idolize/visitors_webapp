@@ -1,10 +1,12 @@
 import './AdminDashboard.css'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Users, CreditCard, AlertTriangle } from 'lucide-react'
+import { Users, CreditCard, LayoutGrid } from 'lucide-react'
 import StatCard from '../../components/shared/StatCard'
 import QuickActions from '../../components/shared/QuickActions'
 import ActiveCardsPanel from '../../components/shared/ActiveCardsPanel'
+// 1. IMPORT APPSHELL HERE
+import AppShell from '../../components/layout/AppShell'
 
 const AdminDashboard = () => {
     const navigate = useNavigate()
@@ -36,8 +38,8 @@ const AdminDashboard = () => {
     }
 
     return (
-        /* Empty angle brackets act as the React Fragment */
-        <>
+        /* 2. WRAP THE ENTIRE PAGE IN APPSHELL WITH ROLE="admin" */
+        <AppShell role="admin">
             <div className="admin-dashboard">
 
                 {/* Greeting */}
@@ -62,7 +64,7 @@ const AdminDashboard = () => {
                     />
 
                     <StatCard
-                        label="Active ID Cards"
+                        label="Active Visitors"
                         count={stats.activeCards}
                         subtext="View details →"
                         subtextColor="#F59E0B"
@@ -72,11 +74,11 @@ const AdminDashboard = () => {
                     />
 
                     <StatCard
-                        label="Lost ID Cards"
-                        count={stats.lostCards}
-                        subtext="View details →"
+                        label="View Cards"
+                        count={stats.activeCards} 
+                        subtext="Go to page →"
                         subtextColor="#C0392B"
-                        icon={AlertTriangle}
+                        icon={LayoutGrid}
                         borderColor="#C0392B"
                         onClick={() => navigate('/admin/id-cards')}
                     />
@@ -97,7 +99,7 @@ const AdminDashboard = () => {
                 isOpen={isPanelOpen}
                 onClose={() => setIsPanelOpen(false)}
             />
-        </>
+        </AppShell>
     )
 }
 
