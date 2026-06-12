@@ -1,79 +1,105 @@
 // src/components/layout/Sidebar.jsx
-import './Sidebar.css'
-import { useNavigate, useLocation } from 'react-router-dom'
-import {
-    Home,
-    UserPlus,
-    Users,
-    CreditCard,
-    BarChart2,
-    User
-} from 'lucide-react'
+import React, { useState } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { 
+    LayoutDashboard, 
+    UserPlus, 
+    Users, 
+    IdCard, 
+    FileText, 
+    ChevronLeft, 
+    Menu, 
+    LogOut 
+} from 'lucide-react';
+import './Sidebar.css'; 
 
 const receptionistNav = [
-    { label: 'Home', icon: Home, path: '/dashboard' },
+    { label: 'Home', icon: LayoutDashboard, path: '/dashboard' },
     { label: 'Register Visitor', icon: UserPlus, path: '/register-visitor' },
     { label: 'Visitors', icon: Users, path: '/visitors' },
-    { label: 'ID Cards', icon: CreditCard, path: '/id-cards' },
-]
+    { label: 'ID Cards', icon: IdCard, path: '/id-cards' },
+];
 
 const adminNav = [
-    { label: 'Home', icon: Home, path: '/admin/dashboard' },
+    { label: 'Home', icon: LayoutDashboard, path: '/admin/dashboard' },
     { label: 'Visitors', icon: Users, path: '/admin/visitors' },
-    { label: 'ID Cards', icon: CreditCard, path: '/admin/id-cards' },
-    { label: 'Reports', icon: BarChart2, path: '/admin/reports' },
-]
+    { label: 'ID Cards', icon: IdCard, path: '/admin/id-cards' },
+    { label: 'Reports and MIS', icon: FileText, path: '/admin/reports' }
+];
 
 const Sidebar = ({ role = 'receptionist' }) => {
-    const navigate = useNavigate()
-    const location = useLocation()
+    const [isCollapsed, setIsCollapsed] = useState(false);
+    const navigate = useNavigate();
 
-    const navItems = role === 'admin' ? adminNav : receptionistNav
+    // Dynamically choose which links to show based on the role
+    const navItems = role === 'admin' ? adminNav : receptionistNav;
+
+    const handleLogout = () => {
+        // Add logout logic here later (clear tokens, etc.)
+        navigate('/');
+    };
 
     return (
-        <aside className="sidebar">
-
-            {/* App Name */}
-            <div className="sidebar-brand">
-                <span className="sidebar-app-name">Swagat</span>
+        <aside className={`sidebar ${isCollapsed ? 'collapsed' : ''}`}>
+            
+            {/* Header with Logo and Toggle */}
+            <div className="sidebar-header">
+                {!isCollapsed && (
+                    <div className="brand-logo">
+                        <h2 style={{ color: 'var(--brandRed)', margin: 0 }}>Swagat</h2>
+                    </div>
+                )}
+                <button 
+                    className="toggle-btn" 
+                    onClick={() => setIsCollapsed(!isCollapsed)}
+                    title={isCollapsed ? "Expand Sidebar" : "Collapse Sidebar"}
+                >
+                    {isCollapsed ? <Menu size={20} /> : <ChevronLeft size={20} />}
+                </button>
             </div>
 
-            {/* Navigation */}
+            {/* Dynamic Navigation mapped from the arrays */}
             <nav className="sidebar-nav">
                 {navItems.map((item) => {
-                    const Icon = item.icon
-                    const isActive = location.pathname === item.path
-
+                    const Icon = item.icon;
                     return (
-                        <button
-                            key={item.path}
-                            className={`nav-item ${isActive ? 'active' : ''}`}
-                            onClick={() => navigate(item.path)}
+                        <NavLink 
+                            key={item.path} 
+                            to={item.path} 
+                            className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
                         >
-                            <Icon size={18} />
-                            <span>{item.label}</span>
-                        </button>
-                    )
+                            <Icon className="nav-icon" size={20} />
+                            {!isCollapsed && <span className="nav-label">{item.label}</span>}
+                        </NavLink>
+                    );
                 })}
             </nav>
 
-            {/* User at bottom */}
-            <div className="sidebar-user">
-                <div className="sidebar-avatar">
-                    <User size={18} />
+            {/* Footer with Dynamic User Info and Logout */}
+            <div className="sidebar-footer">
+                <div className="user-profile">
+                    <div className="avatar">
+                        {role === 'admin' ? 'A' : 'R'}
+                    </div>
+                    {!isCollapsed && (
+                        <div className="user-info">
+                            <span className="user-name">
+                                {role === 'admin' ? 'Admin' : 'Receptionist'}
+                            </span>
+                            <span className="user-role">
+                                {role === 'admin' ? 'Operations' : 'Front Desk'}
+                            </span>
+                        </div>
+                    )}
                 </div>
-                <div className="sidebar-user-info">
-                    <span className="sidebar-username">
-                        {role === 'admin' ? 'Admin' : 'Receptionist'}
-                    </span>
-                    <span className="sidebar-role">
-                        {role === 'admin' ? 'Operations' : 'Reception'}
-                    </span>
-                </div>
+                <button className="logout-btn" onClick={handleLogout}>
+                    <LogOut size={18} />
+                    {!isCollapsed && <span>Logout</span>}
+                </button>
             </div>
-
+            
         </aside>
-    )
-}
+    );
+};
 
-export default Sidebar
+export default Sidebar;

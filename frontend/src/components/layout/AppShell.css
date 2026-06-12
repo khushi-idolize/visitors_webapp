@@ -1,9 +1,17 @@
 /* src/components/layout/AppShell.css */
 
+/* 1. Kill any default browser margins pushing the app down */
+html, body, #root {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
 .app-shell {
     display: flex;
     flex-direction: column;
     height: 100vh;
+    max-height: 100vh; /* Locks it to the exact pixel height of the window */
     overflow: hidden;
 }
 
@@ -11,12 +19,13 @@
     display: flex;
     flex: 1;
     overflow: hidden;
+    min-height: 0; /* MAGIC BULLET: Forces Flexbox to respect the bottom edge */
 }
 
 .app-main {
     flex: 1;
     background-color: #F5F5F5;
-    overflow-y: auto;
+    overflow-y: auto; /* Scrollbar stays inside the main content area */
     padding: 32px;
     box-sizing: border-box;
 }

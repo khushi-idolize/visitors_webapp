@@ -1,0 +1,60 @@
+/* src/pages/AdminDashboard/AdminDashboard.css */
+
+.admin-dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 1200px;
+}
+
+/* Greeting — reuse same classes from Dashboard.css */
+/* But we define them here too to keep files independent */
+.dashboard-greeting {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.greeting-text {
+    font-size: 1.6em;
+    font-weight: 700;
+    color: #1A1A1A;
+    margin: 0;
+}
+
+.greeting-name {
+    color: #C0392B;
+}
+
+.greeting-date {
+    font-size: 0.95em;
+    color: #6B7280;
+}
+
+/* Stat cards row */
+.stat-cards-row {
+    display: flex;
+    gap: 16px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .stat-cards-row {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 768px) {
+    .admin-dashboard {
+        gap: 20px;
+    }
+
+    .greeting-text {
+        font-size: 1.3em;
+    }
+
+    .stat-cards-row {
+        flex-direction: column;
+    }
+}

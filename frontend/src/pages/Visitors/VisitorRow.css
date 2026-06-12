@@ -1,0 +1,239 @@
+/* src/pages/Visitors/VisitorRow.css */
+
+.visitor-row-wrapper {
+    border-bottom: 1px solid #F3F4F6;
+}
+
+.visitor-row-wrapper:last-child {
+    border-bottom: none;
+}
+
+/* Collapsed row */
+.visitor-row {
+    display: grid;
+    grid-template-columns: 2fr 1.5fr 1.5fr 1fr 40px;
+    align-items: center;
+    padding: 14px 16px;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+.visitor-row:hover {
+    background-color: #FFF5F5;
+}
+
+.visitor-row-wrapper.expanded .visitor-row {
+    background-color: #FFF5F5;
+}
+
+/* Avatar */
+.avatar-placeholder {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background-color: #EDE9FE;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: #7C3AED;
+    font-size: 0.9em;
+    flex-shrink: 0;
+}
+
+/* Visitor column */
+.col-visitor {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.visitor-name-block {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.visitor-name {
+    font-weight: 600;
+    color: #1A1A1A;
+    font-size: 0.95em;
+}
+
+.visitor-mobile {
+    font-size: 0.82em;
+    color: #6B7280;
+}
+
+/* Company column */
+.col-company {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.company-name {
+    font-size: 0.9em;
+    font-weight: 500;
+    color: #1A1A1A;
+}
+
+.company-location {
+    font-size: 0.82em;
+    color: #6B7280;
+}
+
+/* Check-in */
+.col-checkin {
+    font-size: 0.88em;
+    color: #374151;
+}
+
+/* Status */
+.col-status {
+    display: flex;
+}
+
+.status-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.82em;
+    font-weight: 600;
+}
+
+.status-active {
+    background-color: #EFF6FF;
+    color: #3B82F6;
+}
+
+.status-done {
+    background-color: #F3F4F6;
+    color: #6B7280;
+}
+
+/* Chevron */
+.col-chevron {
+    display: flex;
+    justify-content: center;
+}
+
+/* ── Expanded ── */
+.visitor-detail {
+    background-color: #FAFAFA;
+    border-top: 1px solid #F3F4F6;
+    padding: 20px 16px;
+}
+
+.detail-content {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+}
+
+/* Large avatar in detail */
+.detail-avatar-placeholder {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    background-color: #EDE9FE;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #7C3AED;
+    flex-shrink: 0;
+}
+
+/* 4-column grid — fills full width */
+.detail-grid {
+    display: grid;
+    grid-template-columns: 120px 1fr 120px 1fr;
+    gap: 14px 24px;
+    flex: 1;
+    align-content: start;
+}
+
+.detail-label {
+    font-size: 0.75em;
+    font-weight: 700;
+    color: #9CA3AF;
+    letter-spacing: 0.5px;
+    padding-top: 2px;
+}
+
+.detail-value {
+    font-size: 0.9em;
+    font-weight: 500;
+    color: #1A1A1A;
+}
+
+.ibs-id {
+    color: #C0392B;
+    font-weight: 700;
+}
+
+.card-badge {
+    background-color: #EFF6FF;
+    color: #3B82F6;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.9em;
+}
+
+/* Checkout */
+.detail-actions {
+    margin-top: 16px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.checkout-btn {
+    padding: 9px 28px;
+    background-color: white;
+    color: #C0392B;
+    border: 1.5px solid #C0392B;
+    border-radius: 8px;
+    font-size: 0.9em;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.2s ease;
+}
+
+.checkout-btn:hover {
+    background-color: #C0392B;
+    color: white;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .detail-grid {
+        grid-template-columns: 110px 1fr 110px 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .visitor-row {
+        grid-template-columns: 1fr 1fr 40px;
+    }
+
+    .col-checkin,
+    .col-company {
+        display: none;
+    }
+
+    .visitor-detail {
+        padding: 16px;
+    }
+
+    .detail-content {
+        flex-direction: column;
+    }
+
+    /* Collapse to 2 columns on mobile */
+    .detail-grid {
+        grid-template-columns: 100px 1fr;
+    }
+}

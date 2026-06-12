@@ -2,41 +2,49 @@
 
 .login-form {
     width: 55%;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 60px 80px;
+    align-items: center;        /* centers children horizontally */
+    padding: 40px 70px;
     box-sizing: border-box;
     background-color: #ffffff;
-    gap: 20px;
+    gap: 10px;
+    overflow-y: auto;
 }
 
-/* Header */
+/* Header — centered */
 .login-header {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    align-items: center;        /* center the text */
+    gap: 3px;
+    width: 100%;
+    margin-bottom: 4px;
 }
 
 .welcome-text {
-    font-size: 2em;
+    font-size: 1.6em;           /* reduced from 1.8em */
     font-weight: 700;
     color: #1A1A1A;
     margin: 0;
+    text-align: center;
 }
 
 .welcome-instruction {
     color: #6B7280;
-    font-size: 0.95em;
+    font-size: 0.85em;          /* reduced */
     margin: 0;
+    text-align: center;
 }
 
 /* Role Buttons */
 .login-buttons {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 7px;
+    width: 100%;
 }
 
 .role-btn {
@@ -44,47 +52,50 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding: 12px;
+    padding: 9px;               /* reduced from 11px */
     border-radius: 8px;
-    font-size: 0.95em;
+    font-size: 0.88em;          /* reduced */
     font-weight: 500;
     cursor: pointer;
     width: 100%;
-    transition: all 0.2s ease;
+    transition: all 0.25s ease;
     font-family: 'Inter', sans-serif;
+    position: relative;
+    border: 1.5px solid transparent;
 }
 
-.receptionist-btn {
+.role-active {
     background-color: #C0392B;
     color: white;
-    border: none;
-    position: relative;
+    border-color: #C0392B;
+    opacity: 1;
 }
 
-.receptionist-btn:hover,
-.receptionist-btn.active {
-    background-color: #A93226;
+.role-active-admin {
+    background-color: #C0392B;
+    color: white;
+    border-color: #C0392B;
+    opacity: 1;
 }
 
-.admin-btn {
+.role-inactive {
     background-color: white;
     color: #C0392B;
-    border: 1.5px solid #C0392B;
+    border-color: #C0392B;
+    opacity: 0.35;
 }
 
-.admin-btn:hover,
-.admin-btn.active {
-    background-color: #fff5f5;
+.role-inactive:hover {
+    opacity: 0.7;
 }
 
-/* Default Badge */
 .default-badge {
     position: absolute;
     right: 12px;
     background-color: rgba(255, 255, 255, 0.25);
     color: white;
-    font-size: 0.7em;
-    padding: 2px 8px;
+    font-size: 0.65em;
+    padding: 2px 6px;
     border-radius: 4px;
     font-weight: 600;
     letter-spacing: 0.5px;
@@ -94,9 +105,10 @@
 .divider {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     color: #9CA3AF;
-    font-size: 0.85em;
+    font-size: 0.78em;          /* reduced */
+    width: 100%;
 }
 
 .divider::before,
@@ -107,21 +119,37 @@
     background-color: #E5E7EB;
 }
 
+/* Error banner */
+.error-banner {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;          /* reduced */
+    background-color: #FEF2F2;
+    border: 1px solid #FCA5A5;
+    border-radius: 8px;
+    color: #DC2626;
+    font-size: 0.82em;
+    font-weight: 500;
+    width: 100%;
+}
+
 /* Form */
 .form-container {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 10px;                  /* reduced */
+    width: 100%;
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 4px;                   /* reduced */
 }
 
 .form-label {
-    font-size: 0.9em;
+    font-size: 0.85em;
     font-weight: 600;
     color: #374151;
 }
@@ -135,6 +163,7 @@
     position: relative;
     display: flex;
     align-items: center;
+    width: 100%;
 }
 
 .input-icon {
@@ -146,10 +175,10 @@
 
 .form-input {
     width: 100%;
-    padding: 11px 12px 11px 38px;
+    padding: 9px 12px 9px 38px; /* reduced vertical padding */
     border: 1.5px solid #E5E7EB;
     border-radius: 8px;
-    font-size: 0.95em;
+    font-size: 0.88em;
     color: #1A1A1A;
     outline: none;
     box-sizing: border-box;
@@ -182,15 +211,15 @@
     color: #374151;
 }
 
-/* Login Button */
+/* Login button */
 .login-button {
     width: 100%;
-    padding: 13px;
+    padding: 11px;              /* reduced */
     background-color: #1A1A2E;
     color: white;
     border: none;
     border-radius: 8px;
-    font-size: 1em;
+    font-size: 0.92em;
     font-weight: 700;
     cursor: pointer;
     letter-spacing: 1px;
@@ -202,15 +231,90 @@
     background-color: #0f0f1a;
 }
 
-/* Forgot Password */
+/* Visitor button */
+.visitor-btn {
+    width: 100%;
+    padding: 9px;               /* reduced */
+    background-color: white;
+    color: #374151;
+    border: 1.5px solid #E5E7EB;
+    border-radius: 8px;
+    font-size: 0.88em;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.2s ease;
+}
+
+.visitor-btn:hover {
+    border-color: #C0392B;
+    color: #C0392B;
+}
+
+/* Forgot password */
 .forgot-password {
     text-align: center;
     color: #6B7280;
-    font-size: 0.875em;
+    font-size: 0.82em;
     text-decoration: none;
+    width: 100%;
+    display: block;
 }
 
 .forgot-password:hover {
     color: #C0392B;
-    text-decoration: underline;
+}
+
+/* Temp hint */
+.temp-hint {
+    text-align: center;
+    font-size: 0.68em;          /* reduced */
+    color: #9CA3AF;
+    background-color: #F9FAFB;
+    padding: 6px 8px;           /* reduced */
+    border-radius: 6px;
+    border: 1px dashed #E5E7EB;
+    margin: 0;
+    width: 100%;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+    .login-form {
+        padding: 40px 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .login-form {
+        width: 100%;
+        padding: 50px 32px 40px;
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-form {
+        padding: 40px 20px 32px;
+        gap: 8px;
+    }
+
+    .welcome-text {
+        font-size: 1.4em;
+    }
+}
+
+@media (max-width: 360px) {
+    .login-form {
+        gap: 7px;
+        padding: 32px 16px;
+    }
+
+    .welcome-text {
+        font-size: 1.2em;
+    }
 }

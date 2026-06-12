@@ -2,7 +2,7 @@
 
 .sidebar {
     width: 220px;
-    height: 100%;
+    height: 100%; /* Keeps the sidebar contained to the screen */
     background-color: #ffffff;
     border-right: 1px solid #E5E7EB;
     display: flex;
@@ -12,17 +12,28 @@
     flex-shrink: 0;
 }
 
-/* Brand */
-.sidebar-brand {
+/* Header / Brand */
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     padding: 0 12px;
     margin-bottom: 28px;
 }
 
-.sidebar-app-name {
+.brand-logo h2 {
     font-size: 1.4em;
     font-weight: 800;
     color: #C0392B;
     letter-spacing: -0.5px;
+    margin: 0;
+}
+
+.toggle-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #6B7280;
 }
 
 /* Nav */
@@ -30,7 +41,8 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
-    flex: 1;
+    flex: 1; /* This pushes the footer down to the bottom */
+    overflow-y: auto; /* Adds a scrollbar only if the links overflow */
 }
 
 .nav-item {
@@ -48,6 +60,7 @@
     text-align: left;
     transition: all 0.15s ease;
     font-family: 'Inter', sans-serif;
+    text-decoration: none;
 }
 
 .nav-item:hover {
@@ -61,17 +74,24 @@
     font-weight: 600;
 }
 
-/* User section */
-.sidebar-user {
+/* Footer & User section */
+.sidebar-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px 0 0 0;
+    border-top: 1px solid #E5E7EB;
+    margin-top: auto; /* Glues this whole block to the bottom */
+}
+
+.user-profile {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 12px;
-    border-top: 1px solid #E5E7EB;
-    margin-top: auto;
+    padding: 0 12px;
 }
 
-.sidebar-avatar {
+.avatar {
     width: 36px;
     height: 36px;
     border-radius: 50%;
@@ -81,21 +101,45 @@
     justify-content: center;
     color: white;
     flex-shrink: 0;
+    font-weight: bold;
 }
 
-.sidebar-user-info {
+.user-info {
     display: flex;
     flex-direction: column;
     gap: 2px;
 }
 
-.sidebar-username {
+.user-name {
     font-size: 0.9em;
     font-weight: 600;
     color: #1A1A1A;
 }
 
-.sidebar-role {
+.user-role {
     font-size: 0.78em;
     color: #6B7280;
+}
+
+/* New Logout Button Style */
+.logout-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #E5E7EB;
+    background: transparent;
+    cursor: pointer;
+    font-size: 0.95em;
+    color: #374151;
+    width: 100%;
+    transition: all 0.15s ease;
+    font-family: 'Inter', sans-serif;
+}
+
+.logout-btn:hover {
+    background-color: #FFF0F0;
+    color: #C0392B;
+    border-color: #FCA5A5;
 }
