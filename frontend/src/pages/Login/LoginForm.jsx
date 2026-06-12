@@ -1,20 +1,55 @@
 // src/pages/Login/LoginForm.jsx
-import "./LoginForm.css"
-import { useState } from "react"
-import { useNavigate } from "react-router-dom";
-import { User, Lock, Eye, EyeOff, Shield, UserPlus } from 'lucide-react'
+import './LoginForm.css'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { User, Lock, Eye, EyeOff, Shield, UserPlus, AlertCircle } from 'lucide-react'
+
+// Temporary hardcoded credentials — remove when backend is ready
+const TEMP_USERS = {
+    receptionist: { uid: 'reception', password: 'reception123' },
+    admin: { uid: 'admin', password: 'admin123' }
+}
 
 function LoginForm() {
     const navigate = useNavigate()
+
+    // Which role button is selected
+    const [selectedRole, setSelectedRole] = useState('receptionist')
+
+    // Form field values
+    const [uid, setUid] = useState('')
+    const [password, setPassword] = useState('')
+
+    // Password visibility toggle
     const [showPassword, setShowPassword] = useState(false)
-    const [selectedRole, setSelectedRole] = useState("receptionist")
+
+    // Error message — null means no error
+    const [error, setError] = useState(null)
 
     const handleLogin = () => {
-        if (selectedRole === "receptionist") {
-            navigate('/dashboard')
-        } else if (selectedRole === "admin") {
-            navigate('/admin/dashboard')
+        // Clear previous error
+        setError(null)
+
+        // Get expected credentials for selected role
+        const expected = TEMP_USERS[selectedRole]
+
+        // Check if credentials match
+        if (uid === expected.uid && password === expected.password) {
+            // Correct — navigate based on role
+            if (selectedRole === 'receptionist') {
+                navigate('/dashboard')
+            } else {
+                navigate('/admin/dashboard')
+            }
+        } else {
+            // Wrong — show error
+            setError('Incorrect User ID or Password. Please try again.')
         }
+    }
+
+    // Allow login on Enter key press
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') handleLogin()
     }
 
     return (
@@ -30,19 +65,25 @@ function LoginForm() {
             <div className="login-buttons">
 
                 <button
-                    className={`role-btn receptionist-btn ${selectedRole === "receptionist" ? "active" : ""}`}
-                    onClick={() => setSelectedRole("receptionist")}
+                    className={`role-btn receptionist-btn ${selectedRole === 'receptionist' ? 'role-active' : 'role-inactive'}`}
+                    onClick={() => {
+                        setSelectedRole('receptionist')
+                        setError(null)
+                    }}
                 >
                     <User size={16} />
                     Login as Receptionist
-                    {selectedRole === "receptionist" && (
+                    {selectedRole === 'receptionist' && (
                         <span className="default-badge">DEFAULT</span>
                     )}
                 </button>
 
                 <button
-                    className={`role-btn admin-btn ${selectedRole === "admin" ? "active" : ""}`}
-                    onClick={() => setSelectedRole("admin")}
+                    className={`role-btn admin-btn ${selectedRole === 'admin' ? 'role-active-admin' : 'role-inactive'}`}
+                    onClick={() => {
+                        setSelectedRole('admin')
+                        setError(null)
+                    }}
                 >
                     <Shield size={16} />
                     Login as Admin
@@ -50,10 +91,18 @@ function LoginForm() {
 
             </div>
 
-            {/* Divider */}
+            {/* Divider
             <div className="divider">
                 <span>or sign in with your credentials</span>
-            </div>
+            </div> */}
+
+            {/* Error Message */}
+            {error && (
+                <div className="error-banner">
+                    <AlertCircle size={16} />
+                    <span>{error}</span>
+                </div>
+            )}
 
             {/* Form Fields */}
             <div className="form-container">
@@ -68,7 +117,9 @@ function LoginForm() {
                             type="text"
                             className="form-input"
                             placeholder="Enter your User ID"
-                            required
+                            value={uid}
+                            onChange={(e) => setUid(e.target.value)}
+                            onKeyDown={handleKeyDown}
                         />
                     </div>
                 </div>
@@ -80,20 +131,19 @@ function LoginForm() {
                     <div className="input-wrapper">
                         <Lock size={16} className="input-icon" />
                         <input
-                            type={showPassword ? "text" : "password"}
+                            type={showPassword ? 'text' : 'password'}
                             className="form-input"
                             placeholder="Enter your password"
-                            required
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            onKeyDown={handleKeyDown}
                         />
                         <button
                             type="button"
                             className="password-toggle"
                             onClick={() => setShowPassword(!showPassword)}
                         >
-                            {showPassword
-                                ? <EyeOff size={16} />
-                                : <Eye size={16} />
-                            }
+                            {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                         </button>
                     </div>
                 </div>
@@ -101,14 +151,23 @@ function LoginForm() {
             </div>
 
             {/* Login Button */}
-            <button className="login-button"
-                onClick = {handleLogin}
-                >
+            <button className="login-button" onClick={handleLogin}>
                 LOGIN →
             </button>
 
+            {/* Visitor Button */}
+            <button
+                className="visitor-btn"
+                onClick={() => navigate('/visitor-login')}
+            >
+                <UserPlus size={16} />
+                Login as Visitor
+            </button>
+
             {/* Forgot Password */}
-            <a href="#" className="forgot-password">
+            <a  className="forgot-password"
+                onClick={() => navigate('/forgot-password')}
+                style={{ cursor: 'pointer' }}>
                 Forgot Password?
             </a>
 

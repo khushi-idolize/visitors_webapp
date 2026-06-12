@@ -1,21 +1,21 @@
-// src/pages/Dashboard/index.jsx
-import './Dashboard.css'
+// src/pages/AdminDashboard/index.jsx
+import './AdminDashboard.css'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Users, CreditCard, LayoutGrid } from 'lucide-react'
+import { Users, CreditCard, AlertTriangle } from 'lucide-react'
 import AppShell from '../../components/layout/AppShell'
 import StatCard from '../../components/shared/StatCard'
 import QuickActions from '../../components/shared/QuickActions'
 import ActiveCardsPanel from '../../components/shared/ActiveCardsPanel'
-import IDCardsPage from '../ID Cards/index'
 
-const Dashboard = () => {
+const AdminDashboard = () => {
     const navigate = useNavigate()
     const [isPanelOpen, setIsPanelOpen] = useState(false)
 
     const stats = {
-        todayVisitors: 8,
-        activeCards: 9,
+        todayVisitors: 2,
+        activeCards: 12,
+        lostCards: 1,
     }
 
     const getGreeting = () => {
@@ -32,30 +32,36 @@ const Dashboard = () => {
         year: 'numeric'
     })
 
-    return (
-        <AppShell role="receptionist">
+    const handleExportReport = () => {
+        // Placeholder — wire to API later
+        alert('Export functionality coming soon.')
+    }
 
-            <div className="dashboard">
+    return (
+        <AppShell role="admin">
+            <div className="admin-dashboard">
 
                 {/* Greeting */}
                 <div className="dashboard-greeting">
                     <h1 className="greeting-text">
                         {getGreeting()},{' '}
-                        <span className="greeting-name">Receptionist</span>
+                        <span className="greeting-name">Admin</span>
                     </h1>
                     <span className="greeting-date">{today}</span>
                 </div>
 
                 {/* Stat Cards */}
                 <div className="stat-cards-row">
+
                     <StatCard
                         label="Today's Visitors"
                         count={stats.todayVisitors}
-                        subtext="Go to page →"
+                        subtext="View details →"
                         icon={Users}
                         borderColor="#3B82F6"
-                        onClick={() => navigate('/visitors')}
+                        onClick={() => navigate('/admin/visitors')}
                     />
+
                     <StatCard
                         label="Active ID Cards"
                         count={stats.activeCards}
@@ -65,35 +71,29 @@ const Dashboard = () => {
                         borderColor="#F59E0B"
                         onClick={() => setIsPanelOpen(true)}
                     />
-                    <StatCard
-                        label="View Cards"
-                        subtext="Go to page →"
-                        icon={LayoutGrid}
-                        borderColor="#C0392B"
-                        isNavigable={true}
-                        onClick={() => navigate('/id-cards')}
-                    />
-                </div>
 
-                {/* Pending Approvals */}
-                <div className="pending-section">
-                    <div className="pending-header">
-                        <h2 className="pending-title">Pending Approvals</h2>
-                    </div>
-                    <div className="pending-empty">
-                        <p>No pending check-ins at this time.</p>
-                    </div>
+                    <StatCard
+                        label="Lost ID Cards"
+                        count={stats.lostCards}
+                        subtext="View details →"
+                        subtextColor="#C0392B"
+                        icon={AlertTriangle}
+                        borderColor="#C0392B"
+                        onClick={() => navigate('/admin/id-cards')}
+                    />
+
                 </div>
 
                 {/* Quick Actions */}
                 <QuickActions
-                    onRegisterVisitor={() => navigate('/register-visitor')}
-                    onManageCards={() => navigate('/id-cards')}
+                    role="admin"
+                    onViewLog={() => navigate('/admin/visitors')}
+                    onExportReport={handleExportReport}
                 />
 
             </div>
 
-            {/* Panel lives inside AppShell but outside dashboard div */}
+            {/* Active Cards Panel */}
             <ActiveCardsPanel
                 isOpen={isPanelOpen}
                 onClose={() => setIsPanelOpen(false)}
@@ -103,4 +103,4 @@ const Dashboard = () => {
     )
 }
 
-export default Dashboard
+export default AdminDashboard

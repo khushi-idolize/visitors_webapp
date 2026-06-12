@@ -21,7 +21,7 @@ const adminNav = [
     { label: 'Home', icon: Home, path: '/admin/dashboard' },
     { label: 'Visitors', icon: Users, path: '/admin/visitors' },
     { label: 'ID Cards', icon: CreditCard, path: '/admin/id-cards' },
-    { label: 'Reports', icon: BarChart2, path: '/admin/reports' },
+    { label: 'Reports and MIS', icon: BarChart2, path: '/admin/reports' }
 ]
 
 const Sidebar = ({ role = 'receptionist' }) => {

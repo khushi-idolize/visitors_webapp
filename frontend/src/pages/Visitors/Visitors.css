@@ -1,0 +1,165 @@
+/* src/pages/Visitors/Visitors.css */
+
+.visitors-page {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 1200px;
+}
+
+/* Header */
+.visitors-title {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #1A1A1A;
+    margin: 0 0 4px;
+}
+
+.visitors-subtext {
+    color: #6B7280;
+    font-size: 0.9em;
+    margin: 0;
+}
+
+/* Search */
+.search-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-icon {
+    position: absolute;
+    left: 14px;
+    color: #9CA3AF;
+    pointer-events: none;
+}
+
+.search-input {
+    width: 100%;
+    padding: 11px 16px 11px 40px;
+    border: 1.5px solid #E5E7EB;
+    border-radius: 8px;
+    font-size: 0.95em;
+    outline: none;
+    background: white;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+.search-input:focus {
+    border-color: #C0392B;
+}
+
+/* Filter Row */
+.filter-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.filter-input {
+    padding: 9px 12px;
+    border: 1.5px solid #E5E7EB;
+    border-radius: 8px;
+    font-size: 0.88em;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+    flex: 1;
+    min-width: 120px;
+    box-sizing: border-box;
+}
+
+.filter-input:focus {
+    border-color: #C0392B;
+}
+
+.filter-date {
+    max-width: 160px;
+}
+
+.filter-dash {
+    color: #9CA3AF;
+    font-size: 0.9em;
+    flex-shrink: 0;
+}
+
+.filter-apply-btn {
+    padding: 9px 18px;
+    background-color: #C0392B;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.88em;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    font-family: 'Inter', sans-serif;
+    transition: background-color 0.2s ease;
+}
+
+.filter-apply-btn:hover {
+    background-color: #A93226;
+}
+
+.filter-clear-btn {
+    background: none;
+    border: none;
+    color: #6B7280;
+    font-size: 0.88em;
+    cursor: pointer;
+    white-space: nowrap;
+    font-family: 'Inter', sans-serif;
+    padding: 9px 4px;
+}
+
+.filter-clear-btn:hover {
+    color: #C0392B;
+}
+
+/* Table Header */
+.table-header {
+    display: grid;
+    grid-template-columns: 2fr 1.5fr 1.5fr 1fr 40px;
+    padding: 10px 16px;
+    background-color: #F3F4F6;
+    border-radius: 8px;
+    font-size: 0.78em;
+    font-weight: 700;
+    color: #6B7280;
+    letter-spacing: 0.5px;
+}
+
+/* Table Body */
+.table-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.table-empty {
+    text-align: center;
+    padding: 40px;
+    color: #9CA3AF;
+    font-size: 0.95em;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .table-header {
+        display: none;
+    }
+
+    .filter-row {
+        gap: 8px;
+    }
+
+    .filter-date {
+        max-width: 100%;
+    }
+}

@@ -1,0 +1,229 @@
+/* src/components/shared/ActiveCardsPanel.css */
+
+/* Full screen overlay */
+.panel-overlay {
+    position: fixed;
+    inset: 0; /* top:0 right:0 bottom:0 left:0 — shorthand */
+    background-color: rgba(0, 0, 0, 0.40);
+    z-index: 200;
+    display: flex;
+    justify-content: flex-end; /* panel sits on right */
+}
+
+/* The white drawer */
+.panel-drawer {
+    width: 380px;
+    height: 100%;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: -4px 0 20px rgba(0,0,0,0.15);
+}
+
+/* Header */
+.panel-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 24px 20px 16px;
+    flex-shrink: 0;
+}
+
+.panel-title {
+    font-size: 1.2em;
+    font-weight: 700;
+    color: #1A1A1A;
+    margin: 0 0 4px;
+}
+
+.panel-subtitle {
+    font-size: 0.85em;
+    color: #6B7280;
+    margin: 0;
+}
+
+.panel-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #6B7280;
+    padding: 4px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.panel-close:hover {
+    background-color: #F3F4F6;
+    color: #1A1A1A;
+}
+
+.panel-divider {
+    height: 1px;
+    background-color: #E5E7EB;
+    margin: 0 20px;
+    flex-shrink: 0;
+}
+
+/* Column headers */
+.panel-col-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 20px 8px;
+    font-size: 0.75em;
+    font-weight: 700;
+    color: #9CA3AF;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+}
+
+/* Scrollable list */
+.panel-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 8px;
+}
+
+/* Each card row */
+.panel-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+.panel-row:hover {
+    background-color: #FFF5F5;
+}
+
+.panel-row-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.panel-blue-dot {
+    color: #3B82F6;
+    font-size: 0.7em;
+}
+
+.panel-card-number {
+    font-size: 0.95em;
+    font-weight: 600;
+    color: #1A1A1A;
+}
+
+.panel-row-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.panel-held-by {
+    font-size: 0.9em;
+    color: #C0392B;
+    font-weight: 500;
+}
+
+/* Footer */
+.panel-footer {
+    padding: 16px 20px;
+    font-size: 0.8em;
+    color: #9CA3AF;
+    text-align: center;
+    border-top: 1px solid #E5E7EB;
+    flex-shrink: 0;
+}
+
+/* ── DETAIL VIEW ── */
+.panel-back {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #6B7280;
+    padding: 4px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+.panel-back:hover {
+    background-color: #F3F4F6;
+}
+
+.panel-detail-title-block {
+    flex: 1;
+}
+
+/* Detail grid — label on left, value on right */
+.panel-detail-grid {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 16px 12px;
+    padding: 24px 20px;
+    flex: 1;
+    overflow-y: auto;
+    align-content: start;
+}
+
+.detail-label {
+    font-size: 0.75em;
+    font-weight: 700;
+    color: #9CA3AF;
+    letter-spacing: 0.5px;
+    padding-top: 2px;
+}
+
+.detail-value {
+    font-size: 0.95em;
+    font-weight: 500;
+    color: #1A1A1A;
+}
+
+.detail-card-badge {
+    background-color: #EFF6FF;
+    color: #3B82F6;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 0.9em;
+}
+
+/* Detail close button */
+.panel-detail-footer {
+    padding: 16px 20px;
+    border-top: 1px solid #E5E7EB;
+    flex-shrink: 0;
+}
+
+.panel-close-btn {
+    width: 100%;
+    padding: 13px;
+    background-color: #C0392B;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: background-color 0.2s ease;
+}
+
+.panel-close-btn:hover {
+    background-color: #A93226;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .panel-drawer {
+        width: 100vw;
+    }
+}
